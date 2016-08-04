@@ -1,0 +1,17 @@
+.body {
+  background-color: #64DDBB;
+  color: #3C3741;
+}
+
+.headbar {
+  color:#710301;
+}
+
+table,tr,thead,td,th {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+.data {
+  
+}

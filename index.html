@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Chicago</title>
+    <link rel="icon" href="img/fav.png">
+
+    <!--^^^ Style ^^^-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+
+
+  </head>
+
+  <body ng-app="crimeApp" class="body">
+
+    <div class="container" ng-controller="dataCtrl">
+
+      <!--^^^ Header ^^^-->
+      <div class="row headbar">
+        <h1 class="text-center">Chicago Crime Data</h1>
+      </div>
+
+      <!--^^^ Filter/Update View ^^^-->
+      <div ng-view>
+
+      </div>
+
+      <!--^^^ Data Display ^^^-->
+      <div class="data">
+        <table align="center">
+            <thead>
+              <th>Year</th>
+              <th>Over $500</th>
+              <th>Under $500</th>
+            </thead>
+          <tr ng-repeat="x in yearArray">
+            <td>
+              {{x}}
+            </td>
+            <td>
+              {{valueArray[$index].Over$500}}
+            </td>
+            <td>
+              {{valueArray[$index].Under$500}}
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+    <!--^^^ Scripts ^^^-->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" charset="utf-8"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+    <script src="js/filterCtrl.js" charset="utf-8"></script>
+    <script src="js/updateCtrl.js" charset="utf-8"></script>
+
+  </body>
+</html>
