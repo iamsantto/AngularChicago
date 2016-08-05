@@ -1,0 +1,19 @@
+<div class="data">
+  <table align="center">
+      <thead>
+        <th>Yearaa</th>
+        <th>Over $500</th>
+        <th>Under $500</th>
+      </thead>
+      <tr dir-paginate="x in dispArray|itemsPerPage:3" total-items="total_count">
+        <td>
+          {{x.year}}
+        </td>
+        <td>
+          {{x.over}}
+        </td>
+        <td>
+          {{x.under}}
+        </td>
+  </table>
+</div>

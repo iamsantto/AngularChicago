@@ -15,17 +15,13 @@
 
   <body ng-app="crimeApp" class="body">
 
-    <div class="container" ng-controller="dataCtrl">
+    <div class="container" ng-controller="dataCtrl as pages">
 
       <!--^^^ Header ^^^-->
-      <div class="row headbar">
-        <h1 class="text-center">Chicago Crime Data</h1>
-      </div>
+      <crime-head></crime-head>
 
       <!--^^^ Filter/Update View ^^^-->
-      <div ng-view>
-
-      </div>
+      <div ng-view></div>
 
       <!--^^^ Data Display ^^^-->
       <div class="data">
@@ -35,19 +31,22 @@
               <th>Over $500</th>
               <th>Under $500</th>
             </thead>
-          <tr ng-repeat="x in yearArray">
-            <td>
-              {{x}}
-            </td>
-            <td>
-              {{valueArray[$index].Over$500}}
-            </td>
-            <td>
-              {{valueArray[$index].Under$500}}
-            </td>
-          </tr>
+            <tr dir-paginate="x in pages.dispArray|itemsPerPage:pages.itemsPerPage" total-items="pages.total_count">
+              <td>
+                {{x.year}}
+              </td>
+              <td>
+                {{x.over}}
+              </td>
+              <td>
+                {{x.under}}
+              </td>
+            </tr>
         </table>
       </div>
+
+      <!--^^^ Pagination ^^^-->
+      <dir-pagination-controls max-size="8" direction-links="false" boundary-links="false" on-page-change="pages.getData(newPageNumber)"></dir-pagination-controls>
 
     </div>
 
@@ -56,9 +55,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" charset="utf-8"></script>
+
+    <!-- <script src="js/.js" charset="utf-8"></script> -->
     <script src="js/main.js" charset="utf-8"></script>
+    <script src="js/paginate.js" charset="utf-8"></script>
     <script src="js/filterCtrl.js" charset="utf-8"></script>
     <script src="js/updateCtrl.js" charset="utf-8"></script>
+    <script src="js/insertCtrl.js" charset="utf-8"></script>
 
   </body>
 </html>

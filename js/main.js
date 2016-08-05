@@ -1,4 +1,4 @@
-var ca = angular.module('crimeApp',['ngRoute']).config(['$routeProvider',function($routeProvider){
+var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagination']).config(['$routeProvider',function($routeProvider){
   $routeProvider
     .when('/home',{
       templateUrl: 'views/filterTab.html',
@@ -6,9 +6,21 @@ var ca = angular.module('crimeApp',['ngRoute']).config(['$routeProvider',functio
     })
     .when('/update',{
       templateUrl: 'views/update.html',
-      controller: ''
+      controller: 'updateCtrl'
     })
-}]).controller('dataCtrl',function($scope){
+    .when('/add',{
+      templateUrl: 'views/insert.html',
+      controller: 'insertCtrl'
+    })
+}]).directive('mainData',function(){
+  return {
+    templateUrl:'views/main.html'
+  }
+}).directive('crimeHead',function(){
+  return {
+    templateUrl:'views/head.html'
+  }
+}).controller('dataCtrl',function($scope){
   $scope.dataObj = {
     "1986":{"Over$500":32871,"Under$500":61777},
     "1987":{"Over$500":27842,"Under$500":47493},
@@ -44,18 +56,38 @@ var ca = angular.module('crimeApp',['ngRoute']).config(['$routeProvider',functio
 
   $scope.yearArray = Object.keys($scope.dataObj);
   $scope.valueArray = [];
+  $scope.tableData = [];
+
   for(var i=0;i<$scope.yearArray.length;i++){
     $scope.valueArray.push($scope.dataObj[$scope.yearArray[i]]);
   }
 
+  for(var j=0;j<$scope.yearArray.length;j++){
+    var tempObj = {
+      'year' : 0,
+      'over' : 0,
+      'under' : 0
+    };
+    tempObj.year = parseInt($scope.yearArray[j]);
+    tempObj.over = $scope.valueArray[j]['Over$500'];
+    tempObj.under = $scope.valueArray[j]['Under$500'];
 
+    $scope.tableData.push(tempObj);
+  }
 
-
-
-
-
-
-
+    var vm = this;
+    vm.dispArray = [];
+    vm.pageno = 1;
+    vm.total_count = $scope.tableData.length;
+    vm.itemsPerPage = 3;
+    vm.getData = function(pageno){
+        vm.tempArray=[];
+        for(var z=((pageno-1)*vm.itemsPerPage);z<(pageno*vm.itemsPerPage);z++){
+          vm.tempArray.push($scope.tableData[z]);
+        }
+            vm.dispArray = vm.tempArray;
+    };
+    vm.getData(vm.pageno);
 
 
 });

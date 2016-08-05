@@ -1,3 +1,3 @@
   ca.controller('filterCtrl',function(){
-    console.log("this is working");
+    console.log("this is filter");
   });
