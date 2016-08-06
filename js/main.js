@@ -25,7 +25,7 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     restrict: 'E',
     templateUrl:'views/footerbuttons.html'
   }
-}).controller('dataCtrl',function($scope){
+}).controller('dataCtrl',['$scope','$location',function($scope,$location){
   $scope.dataObj = {
     "1987":{"Over$500":21851,"Under$500":24632},
     "1988":{"Over$500":18849,"Under$500":27920},
@@ -79,6 +79,13 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     $scope.tableData.push(tempObj);
   }
 
+  $scope.$on('insertVal',function(evt,args){
+    $scope.tableData.push(args);
+    vm.total_count=$scope.tableData.length;
+  });
+
+
+
     var vm = this;
     vm.dispArray = [];
     vm.pageno = 1;
@@ -100,4 +107,19 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     };
     vm.getData(vm.pageno);
 
-});
+    $scope.openUpdate = function (x){
+      $scope.$broadcast('updateTrig',x);
+      $location.path('/update');
+    };
+
+    $scope.$on('updated',function(evt,args){
+      console.log(args);
+      for(var e=0; e<$scope.tableData.length;e++){
+        if(args.year == $scope.tableData[e].year){
+          $scope.tableData[e].over = args.over;
+          $scope.tableData[e].under = args.under;
+        }
+      }
+    });
+
+}]);

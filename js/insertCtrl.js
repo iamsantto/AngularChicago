@@ -1,12 +1,8 @@
-ca.controller('insertCtrl',['$scope','$window',function($scope,$window){
-  $scope.addObj = {
-    year : 0,
-    under : 0,
-    over : 0
-  };
-
+ca.controller('insertCtrl',['$scope','$window','$location',function($scope,$window,$location){
+  $scope.addObj = {};
   $scope.addNew = function (x){
-    $window.alert("Successfully Added");
+    $scope.$emit('insertVal', x);
+    $location.path('/home');
+    $window.alert("Successfully Added!\nOver Value = " + x.over + "\nUnder Value = " + x.under + "\nYear = " + x.year);
   };
-
 }]);
