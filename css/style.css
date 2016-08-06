@@ -1,10 +1,10 @@
 .body {
-  background-color: #64DDBB;
-  color: #3C3741;
+  background-color: #8A2D3C;
+  color: #000;
 }
 
 .headbar {
-  color:#710301;
+  color:#FFC153;
 }
 
 .data {
@@ -19,6 +19,6 @@ label {
 
 .box {
   margin-top: 10px;
-  border: 1px solid #3E4651;
+  border: 1px solid #eee;
   padding-bottom: 10px;
 }

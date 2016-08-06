@@ -13,7 +13,7 @@
 
   </head>
 
-  <body ng-app="crimeApp" class="body">
+  <body ng-app="crimeApp" class="body" ng-cloak>
 
     <div class="container" ng-controller="dataCtrl as pages">
 
@@ -45,7 +45,7 @@
               </td>
               <td class="text-center">
                 <button type="button" class="btn btn-success" ng-click="openUpdate(x)">Update</button>
-                <button type="button" class="btn btn-danger" ng-click="">Delete</button>
+                <button type="button" class="btn btn-danger" ng-click="delete(x)">Delete</button>
               </td>
             </tr>
           </tbody>
