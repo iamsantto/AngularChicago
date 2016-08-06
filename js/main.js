@@ -20,11 +20,15 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
   return {
     templateUrl:'views/head.html'
   }
+}).directive('footerOps',function(){
+  return {
+    restrict: 'E',
+    templateUrl:'views/footerbuttons.html'
+  }
 }).controller('dataCtrl',function($scope){
   $scope.dataObj = {
-    "1986":{"Over$500":32871,"Under$500":61777},
-    "1987":{"Over$500":27842,"Under$500":47493},
-    "1988":{"Over$500":20654,"Under$500":37023},
+    "1987":{"Over$500":21851,"Under$500":24632},
+    "1988":{"Over$500":18849,"Under$500":27920},
     "1989":{"Over$500":19291,"Under$500":35872},
     "1990":{"Over$500":18849,"Under$500":27920},
     "1991":{"Over$500":20724,"Under$500":27182},
@@ -82,12 +86,18 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     vm.itemsPerPage = 3;
     vm.getData = function(pageno){
         vm.tempArray=[];
-        for(var z=((pageno-1)*vm.itemsPerPage);z<(pageno*vm.itemsPerPage);z++){
-          vm.tempArray.push($scope.tableData[z]);
-        }
-            vm.dispArray = vm.tempArray;
+          if(((pageno*vm.itemsPerPage)-1)<$scope.tableData.length){
+            for(var z=((pageno-1)*vm.itemsPerPage);z<(pageno*vm.itemsPerPage);z++){
+              vm.tempArray.push($scope.tableData[z]);
+                vm.dispArray = vm.tempArray;
+            }
+          } else {
+              for(var f=((pageno-1)*vm.itemsPerPage);f<$scope.tableData.length;f++)
+              vm.tempArray.push($scope.tableData[f]);
+              vm.dispArray = vm.tempArray;
+            }
+
     };
     vm.getData(vm.pageno);
-
 
 });

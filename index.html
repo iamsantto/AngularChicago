@@ -25,12 +25,14 @@
 
       <!--^^^ Data Display ^^^-->
       <div class="data">
-        <table align="center">
+        <table class="table table-condensed table-bordered table-hover" align="center">
             <thead>
-              <th>Year</th>
-              <th>Over $500</th>
-              <th>Under $500</th>
+              <th class="success">Year</th>
+              <th class="success">Over $500</th>
+              <th class="success">Under $500</th>
+              <th class="success">Modify</th>
             </thead>
+            <tbody>
             <tr dir-paginate="x in pages.dispArray|itemsPerPage:pages.itemsPerPage" total-items="pages.total_count">
               <td>
                 {{x.year}}
@@ -41,12 +43,24 @@
               <td>
                 {{x.under}}
               </td>
+              <td class="text-center">
+                <button type="button" class="btn btn-success" name="button">Update</button>
+                <button type="button" class="btn btn-danger" name="button">Delete</button>
+              </td>
             </tr>
+          </tbody>
         </table>
       </div>
 
+      <!--^^^ Buttons ^^^-->
+      <footer-ops></footer-ops>
+
       <!--^^^ Pagination ^^^-->
-      <dir-pagination-controls max-size="8" direction-links="false" boundary-links="false" on-page-change="pages.getData(newPageNumber)"></dir-pagination-controls>
+      <div class="row">
+        <div class="col-sm-offset-3 col-sm-7 col-md-offset-4 col-md-5">
+          <dir-pagination-controls max-size="10" direction-links="false" boundary-links="false" on-page-change="pages.getData(newPageNumber)"></dir-pagination-controls>
+        </div>
+      </div>
 
     </div>
 
@@ -55,8 +69,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" charset="utf-8"></script>
-
-    <!-- <script src="js/.js" charset="utf-8"></script> -->
     <script src="js/main.js" charset="utf-8"></script>
     <script src="js/paginate.js" charset="utf-8"></script>
     <script src="js/filterCtrl.js" charset="utf-8"></script>

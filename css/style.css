@@ -7,11 +7,18 @@
   color:#710301;
 }
 
-table,tr,thead,td,th {
-  border: 1px solid black;
-  padding: 20px;
+.data {
+  min-height: 175px;
+  padding: 25px;
 }
 
-.data {
 
+label {
+  padding: 10px;
+}
+
+.box {
+  margin-top: 10px;
+  border: 1px solid #3E4651;
+  padding-bottom: 10px;
 }
