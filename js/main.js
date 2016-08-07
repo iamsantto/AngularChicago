@@ -25,7 +25,7 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     restrict: 'E',
     templateUrl:'views/footerbuttons.html'
   }
-}).controller('dataCtrl',['$scope','$location','$rootScope',function($scope,$location,$rootScope){
+}).controller('dataCtrl',['$scope','$location','$rootScope','$filter',function($scope,$location,$rootScope,$filter){
   $scope.dataObj = {
     "1987":{"Over$500":21851,"Under$500":24632},
     "1988":{"Over$500":18849,"Under$500":27920},
@@ -85,7 +85,6 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
   });
 
 
-
     var vm = this;
     vm.dispArray = [];
     vm.pageno = 1;
@@ -137,7 +136,18 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     }
 
     $scope.$on('searchFor',function(evt,args){
-      
+       $scope.tableData = $filter('filter: {year:' + args.year + '}')($scope.tableData[0]);
+      vm.getData(vm.pageno);
     });
+
+    $scope.zort = function (x,y){
+      if (y==0) {
+        $scope.tableData = $filter('orderBy')($scope.tableData,x);
+        vm.getData(vm.pageno);
+      } else {
+        $scope.tableData = $filter('orderBy')($scope.tableData,x,true);
+        vm.getData(vm.pageno);
+      }
+    };
 
 }]);

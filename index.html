@@ -27,9 +27,18 @@
       <div class="data">
         <table class="table table-condensed table-bordered table-hover" align="center">
             <thead>
-              <th class="success">Year</th>
-              <th class="success">Over $500</th>
-              <th class="success">Under $500</th>
+              <th class="success">Year
+                <button type="button" class="btn btn-link pull-right btn-sm" ng-click="zort('year',0)">&#x25B2;</button> <!--up-->
+                <button type="button" class="btn btn-link pull-right btn-sm" ng-click="zort('year',1)">&#x25BC;</button> <!--down-->
+              </th>
+              <th class="success">Over $500
+                <button type="button" class="btn btn-link pull-right btn-sm" ng-click="zort('over',0)">&#x25B2;</button>
+                <button type="button" class="btn btn-link pull-right btn-sm" ng-click="zort('over',1)">&#x25BC;</button>
+              </th>
+              <th class="success">Under $500
+                <button type="button" class="btn btn-link pull-right btn-sm" ng-click="zort('under',0)">&#x25B2;</button>
+                <button type="button" class="btn btn-link pull-right btn-sm" ng-click="zort('under',1)">&#x25BC;</button>
+              </th>
               <th class="success">Modify</th>
             </thead>
             <tbody>
@@ -71,6 +80,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>
     <script src="js/paginate.js" charset="utf-8"></script>
+    <!-- <script src="js/searchFilter.js" charset="utf-8"></script> -->
     <script src="js/filterCtrl.js" charset="utf-8"></script>
     <script src="js/updateCtrl.js" charset="utf-8"></script>
     <script src="js/insertCtrl.js" charset="utf-8"></script>
