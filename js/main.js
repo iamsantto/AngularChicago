@@ -1,4 +1,4 @@
-var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagination']).config(['$routeProvider',function($routeProvider){
+var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagination']).config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
   $routeProvider
     .when('/home',{
       templateUrl: 'views/filterTab.html',
@@ -11,7 +11,7 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     .when('/add',{
       templateUrl: 'views/insert.html',
       controller: 'insertCtrl'
-    })
+    });
 }]).directive('mainData',function(){
   return {
     templateUrl:'views/main.html'

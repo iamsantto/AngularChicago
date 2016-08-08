@@ -10,7 +10,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
 
-
   </head>
 
   <body ng-app="crimeApp" class="body" ng-cloak>
@@ -42,7 +41,7 @@
               <th class="success">Modify</th>
             </thead>
             <tbody>
-            <tr dir-paginate="x in pages.dispArray|itemsPerPage:pages.itemsPerPage" total-items="pages.total_count">
+            <tr dir-paginate="x in pages.dispArray |itemsPerPage:pages.itemsPerPage" total-items="pages.total_count">
               <td>
                 <span>{{x.year}}</span>
               </td>

@@ -1,12 +1,12 @@
 ca.controller('updateCtrl',['$scope','$location','$window',function($scope,$location,$window){
-  $scope.up = {
-    year: 0,
-    over: 0,
-    under: 0
-  };
+
 
   $scope.$on('updateTrig',function(evt,args){
-    $scope.up.year = args.year;
+    $scope.up = {
+      year: args.year,
+      over: 0,
+      under: 0
+    };
   });
 
   $scope.update = function(x){
