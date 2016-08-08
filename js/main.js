@@ -84,6 +84,8 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     vm.total_count=$scope.tableData.length;
   });
 
+  $scope.tempData = [];
+
 
     var vm = this;
     vm.dispArray = [];
@@ -136,7 +138,21 @@ var ca = angular.module('crimeApp',['ngRoute','angularUtils.directives.dirPagina
     }
 
     $scope.$on('searchFor',function(evt,args){
-       $scope.tableData = $filter('filter: {year:' + args.year + '}')($scope.tableData[0]);
+      for (var g=0; g<$scope.tableData.length;g++){
+        if (args.year == $scope.tableData[g].year){
+          if(args.theft == "Over $500"){
+            if($scope.tableData[g].over>args.greaterThan){
+              $scope.tempData.push($scope.tableData[g]);
+            }
+          } else {
+            if($scope.tableData[g].under>args.greaterThan){
+              $scope.tempData.push($scope.tableData[g]);
+            }
+          }
+        }
+      }
+      $scope.tableData = $scope.tempData;
+      vm.total_count = $scope.tableData.length;
       vm.getData(vm.pageno);
     });
 

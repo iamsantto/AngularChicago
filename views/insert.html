@@ -9,11 +9,11 @@
         </label>
         <label for="Ovalue">
           Over $500
-          <input type="number" class="form-control" id="Ovalue" ng-model="addObj.over" required>
+          <input type="number" class="form-control" id="Ovalue" ng-model="addObj.over" required min="1" max="10000">
         </label>
         <label for="Uvalue">
           Under $500
-          <input type="number" class="form-control" id="Uvalue" ng-model="addObj.under" required>
+          <input type="number" class="form-control" id="Uvalue" ng-model="addObj.under" required min="1" max="10000">
         </label>
         <button class="btn btn-primary center-block" type="submit" name="button">Add</button>
       </form>

@@ -18,7 +18,7 @@
         </label>
         <label for="value">
           Theft Value($)
-          <input type="text" class="form-control" id="value" placeholder="Greater than" ng-model="filter.greaterThan" required>
+          <input type="number" class="form-control" id="value" placeholder="Greater than" ng-model="filter.greaterThan" required min="1" max="10000">
         </label>
         <button class="btn btn-primary center-block" type="submit" name="button">Search</button>
       </form>
