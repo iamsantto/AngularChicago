@@ -1,3 +1,3 @@
 # Angular Chicago
 
-Data handling using AngularJs using the famous Chicago Crime Data.
+Data handling using AngularJs based on the famous Chicago Crime Data.
